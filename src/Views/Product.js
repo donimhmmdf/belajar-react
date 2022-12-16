@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loader from "../Components/Loader";
@@ -11,7 +11,9 @@ function Product() {
     data: null,
     error: false,
   });
+
   let content = null;
+
   useEffect(() => {
     setProduct({
       loading: true,
@@ -37,27 +39,27 @@ function Product() {
   }, [url]);
 
   if (product.error) {
-    content = (
-      <span>There was an error please refresh or try again later...</span>
-    );
+    content = <p>There was an error please refresh or try again later.</p>;
   }
 
   if (product.loading) {
-    content = <Loader />;
+    content = <Loader></Loader>;
   }
 
   if (product.data) {
     content = (
-      <div className="mb-36">
-        <h2 className="font-bold text-2xl mb-3">{product.data.name}</h2>
+      <div>
+        <h1 className="text-2xl font-bold mb-3">{product.data.name}</h1>
         <div>
           <img src={product.data.images[0].imageUrl} alt={product.data.name} />
         </div>
-        <div className="text-xl mb-3 font-bold">{product.data.price}</div>
+        <div className="font-bold text-xl mb-3">$ {product.data.price}</div>
         <div>{product.data.description}</div>
       </div>
     );
   }
+
   return <div>{content}</div>;
 }
+
 export default Product;
