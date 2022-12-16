@@ -8,14 +8,14 @@ import Product from "./Views/Product";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div>
+    <div className="relative min-h-screen pb-10">
       <Router>
         <Header />
         <div className="p-3">
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/product/:id" element={<Product />} />
+            <Route exact path="/products/:id" element={<Product />} />
           </Routes>
         </div>
 
