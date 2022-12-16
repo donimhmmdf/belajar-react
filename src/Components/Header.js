@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header(props) {
+function Header() {
   return <header>AppName</header>;
 }
 export default Header;
